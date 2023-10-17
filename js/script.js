@@ -48,45 +48,50 @@ function isPalindrome(originalW, reverseW){
 }
 
 
-const btnDanger = document.querySelector(".btn-danger");
 const btnSuccess = document.querySelector(".btn-success");
+const btnDanger = document.querySelector(".btn-danger");
+const sceltaEl = document.getElementById("scelta");
 const numeroInserito = document.getElementById("number");
 const pariDispari = document.getElementById("scelta");
 const alertSuccess = document.querySelector(".alert-success");
 const alertDanger = document.querySelector(".alert-danger");
-const game = document.getElementById("game");
 
 btnDanger.addEventListener("click", function(){
-    let sceltaEl = pariDispari.value.toLowerCase();
-    console.log(sceltaEl);
-    if (sceltaEl === "pari" || sceltaEl === "dispari"){
-        game.classList.remove("d-none");
+    alertSuccess.classList.add("d-none");
+    alertDanger.classList.add("d-none");
+    let pariDispari = sceltaEl.value.toLowerCase();
+    if(pariDispari === "pari"){
+        alertSuccess.classList.remove("d-none");
+        alertSuccess.innerHTML = "User sceglie pari e computer dispari";
+    } else if(pariDispari === "dispari"){
+        alertSuccess.classList.remove("d-none");
+        alertSuccess.innerHTML = "User sceglie dispari e computer pari";
     } else{
         alertDanger.classList.remove("d-none");
-        alertDanger.innerHTML = "Devi inserire pari e dispari";
+        alertDanger.innerHTML = "Scegli tra pari o dispari";
     }
     btnSuccess.addEventListener("click", function(){
         let numeroUser = parseInt(numeroInserito.value);
         console.log(numeroUser);
-        if (numeroUser <= 5){
+        let ComputerNum = getRandomInt(1,5);
+        if (numeroUser % 2 === 0 && numeroUser <= 5){
             alertSuccess.classList.remove("d-none");
-            alertSuccess.innerHTML = `<div> User ha scelto: ${numeroUser} </div>`;
-        } else {
+            alertSuccess.innerHTML = `
+                <div> User ha scelto: ${numeroUser} - Pari </div>
+                <div> Computer ha scelto: ${ComputerNum} dispari </div>`;
+        }else if (numeroUser % 2 !== 0 && numeroUser <= 5){
             alertSuccess.classList.remove("d-none");
-            alertSuccess.innerHTML = "Scegli un numero da 1 a 5";
+            alertSuccess.innerHTML = `<div> User ha scelto: ${numeroUser} dispari</div>`;
+        } else{
+            alertSuccess.classList.remove("d-none");
+            alertSuccess.innerHTML = "Devi inserire un numero tra 1 e 5";
         }
-        let computerNumber = getRndInteger(1,5);
-        console.log(computerNumber);
-        alertSuccess.innerHTML +=  ` 
-        <div> Computer ha scelto: ${computerNumber} </div>`;
-        sumEvenOrOdd(numeroUser, computerNumber);
-    })
-});
+    });
+})
 
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
-
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
 function sumEvenOrOdd(UserNum, ComputerNum){
     let sommaNumeri = UserNum + ComputerNum;
     if (sommaNumeri % 2 === 0){
@@ -95,5 +100,9 @@ function sumEvenOrOdd(UserNum, ComputerNum){
         alertSuccess.innerHTML += `<div> La somma dei numeri è ${sommaNumeri}, quindi dispari</div>`;
     }
 }
+
+// function winGame(){
+//     if ()
+// }
 
 
