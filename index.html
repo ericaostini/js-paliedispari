@@ -22,11 +22,14 @@
         <label for="choose">Inserisci pari o dispari</label>
         <input type="text" name="scelta" id="scelta">
         <button class="btn btn-danger">Invia</button>
-        <label for="numero">Inserisci numero da 1 a 5</label>
-        <input type="text" name="numero" id="number">
-        <button class="btn btn-success">Invia</button>
+        <div id="game" class="d-none">
+            <label for="numero">Inserisci numero da 1 a 5</label>
+            <input type="text" name="numero" id="number">
+            <button class="btn btn-success">Invia</button>
+        </div>
 
-        <div class="alert alert-success"></div>
+        <div class="alert alert-success d-none"></div>
+        <div class="alert alert-danger d-none"></div>
     </div>
 
 

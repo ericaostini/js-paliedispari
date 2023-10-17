@@ -49,16 +49,33 @@ function isPalindrome(originalW, reverseW){
 
 
 const btnDanger = document.querySelector(".btn-danger");
-const numeroUser = document.getElementById("number");
+const btnSuccess = document.querySelector(".btn-success");
+const numeroInserito = document.getElementById("number");
 const pariDispari = document.getElementById("scelta");
 const alertSuccess = document.querySelector(".alert-success");
+const alertDanger = document.querySelector(".alert-danger");
+const game = document.getElementById("game");
 
 btnDanger.addEventListener("click", function(){
     let sceltaEl = pariDispari.value.toLowerCase();
     console.log(sceltaEl);
     if (sceltaEl === "pari" || sceltaEl === "dispari"){
-        alertSuccess.innerHTML = "Giochiamo";
+        game.classList.remove("d-none");
     } else{
-        alertSuccess.innerHTML = "Devi inserire pari e dispari";
+        alertDanger.classList.remove("d-none");
+        alertDanger.innerHTML = "Devi inserire pari e dispari";
     }
+    btnSuccess.addEventListener("click", function(){
+        let numeroUser = parseInt(numeroInserito.value);
+        console.log(numeroUser);
+        if (numeroUser <= 5){
+            alertSuccess.classList.remove("d-none");
+            alertSuccess.innerHTML = `User ha scelto: ${numeroUser}`;
+        } else {
+            alertSuccess.classList.remove("d-none");
+            alertSuccess.innerHTML = "Scegli un numero da 1 a 5";
+        }
+    })
 });
+
+
