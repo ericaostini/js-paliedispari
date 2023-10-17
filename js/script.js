@@ -55,17 +55,21 @@ const numeroInserito = document.getElementById("number");
 const pariDispari = document.getElementById("scelta");
 const alertSuccess = document.querySelector(".alert-success");
 const alertDanger = document.querySelector(".alert-danger");
+const game = document.getElementById("game");
 
 btnDanger.addEventListener("click", function(){
     alertSuccess.classList.add("d-none");
     alertDanger.classList.add("d-none");
+    game.classList.add("d-none");
     let pariDispari = sceltaEl.value.toLowerCase();
     if(pariDispari === "pari"){
         alertSuccess.classList.remove("d-none");
         alertSuccess.innerHTML = "User sceglie pari e computer dispari";
+        game.classList.remove("d-none");
     } else if(pariDispari === "dispari"){
         alertSuccess.classList.remove("d-none");
         alertSuccess.innerHTML = "User sceglie dispari e computer pari";
+        game.classList.remove("d-none");
     } else{
         alertDanger.classList.remove("d-none");
         alertDanger.innerHTML = "Scegli tra pari o dispari";
@@ -74,18 +78,15 @@ btnDanger.addEventListener("click", function(){
         let numeroUser = parseInt(numeroInserito.value);
         console.log(numeroUser);
         let ComputerNum = getRandomInt(1,5);
-        if (numeroUser % 2 === 0 && numeroUser <= 5){
-            alertSuccess.classList.remove("d-none");
-            alertSuccess.innerHTML = `
-                <div> User ha scelto: ${numeroUser} - Pari </div>
-                <div> Computer ha scelto: ${ComputerNum} dispari </div>`;
-        }else if (numeroUser % 2 !== 0 && numeroUser <= 5){
-            alertSuccess.classList.remove("d-none");
-            alertSuccess.innerHTML = `<div> User ha scelto: ${numeroUser} dispari</div>`;
+        if (numeroUser <= 5){
+            alertSuccess.innerHTML += `
+                <div> User ha scelto: ${numeroUser}</div>
+                <div> Computer ha scelto: ${ComputerNum}</div>`;
         } else{
-            alertSuccess.classList.remove("d-none");
             alertSuccess.innerHTML = "Devi inserire un numero tra 1 e 5";
         }
+        let sommaNum = sumEvenOrOdd(numeroUser, ComputerNum);
+        console.log(sommaNum);
     });
 })
 
@@ -101,8 +102,14 @@ function sumEvenOrOdd(UserNum, ComputerNum){
     }
 }
 
-// function winGame(){
-//     if ()
+// function winGame(sommaNumeri){
+//     if (sommaNumeri % 2 === 0 && sceltaUtente === "pari"){
+//         alertSuccess.innerHTML += `<div> Utente ha vinto </div>`;
+//     } else if(sommaNumeri % 2 !== 0 && sceltaUtente === "dispari"){
+//         alertSuccess.innerHTML += `<div> Utente ha vinto </div>`;
+//     } else {
+//         alertSuccess.innerHTML += `<div> Computer ha vinto </div>`
+//     }
 // }
 
 
