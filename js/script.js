@@ -58,9 +58,7 @@ const alertDanger = document.querySelector(".alert-danger");
 const game = document.getElementById("game");
 
 btnDanger.addEventListener("click", function(){
-    alertSuccess.classList.add("d-none");
-    alertDanger.classList.add("d-none");
-    game.classList.add("d-none");
+    resetDNone();
     let pariDispari = sceltaEl.value.toLowerCase();
     if(pariDispari === "pari"){
         alertSuccess.classList.remove("d-none");
@@ -77,22 +75,33 @@ btnDanger.addEventListener("click", function(){
     btnSuccess.addEventListener("click", function(){
         let numeroUser = parseInt(numeroInserito.value);
         console.log(numeroUser);
-        let ComputerNum = getRandomInt(1,5);
+        let computerNum = getRandomInt(1,5);
         if (numeroUser <= 5){
             alertSuccess.innerHTML += `
                 <div> User ha scelto: ${numeroUser}</div>
-                <div> Computer ha scelto: ${ComputerNum}</div>`;
+                <div> Computer ha scelto: ${computerNum}</div>`;
         } else{
             alertSuccess.innerHTML = "Devi inserire un numero tra 1 e 5";
         }
-        let sommaNum = sumEvenOrOdd(numeroUser, ComputerNum);
-        console.log(sommaNum);
+        sumEvenOrOdd(numeroUser, computerNum);
     });
 })
 
+/**
+ * random numer tra 1 e 5
+ * @param {Number} min 
+ * @param {Number} max 
+ * @returns {Number} random
+ */
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
+
+/**
+ * somma tra numero inserito da utente e numero random computer
+ * @param {Number} UserNum 
+ * @param {Number} ComputerNum 
+ */
 function sumEvenOrOdd(UserNum, ComputerNum){
     let sommaNumeri = UserNum + ComputerNum;
     if (sommaNumeri % 2 === 0){
@@ -102,8 +111,18 @@ function sumEvenOrOdd(UserNum, ComputerNum){
     }
 }
 
+/**
+ * resetta le impostazioni degli alert
+ */
+function resetDNone(){
+    alertSuccess.classList.add("d-none");
+    alertDanger.classList.add("d-none");
+    game.classList.add("d-none");
+}
+
+
 // function winGame(sommaNumeri){
-//     if (sommaNumeri % 2 === 0 && sceltaUtente === "pari"){
+//     if (sommaNumeri % 2 === 0 && pariDispari === "pari"){
 //         alertSuccess.innerHTML += `<div> Utente ha vinto </div>`;
 //     } else if(sommaNumeri % 2 !== 0 && sceltaUtente === "dispari"){
 //         alertSuccess.innerHTML += `<div> Utente ha vinto </div>`;
