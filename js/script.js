@@ -2,7 +2,9 @@ const btn = document.querySelector("button");
 const word = document.getElementById("word");
 const alertEl = document.querySelector(".alert");
 
-btn.addEventListener("click", function(){
+btn.addEventListener("click", palindromeOrNo);
+
+function palindromeOrNo(){
     let originalWord = word.value.toLowerCase();
     let reverseW = reverseWord(originalWord);
     console.log(reverseW);
@@ -13,7 +15,7 @@ btn.addEventListener("click", function(){
         alertEl.innerHTML = "Non è palindroma"
     }
 
-});
+};
 
 /** [reverseWord]
  * funzione che scrive al contrario una parola
