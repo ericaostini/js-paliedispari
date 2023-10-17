@@ -4,6 +4,9 @@ const alertEl = document.querySelector(".alert");
 
 btn.addEventListener("click", palindromeOrNo);
 
+/** [palindromeOrNO]
+ * funzione inverte parola inserita e le confronta per vedere se sono palindrome
+ */
 function palindromeOrNo(){
     let originalWord = word.value.toLowerCase();
     let reverseW = reverseWord(originalWord);
@@ -29,6 +32,12 @@ function reverseWord(originalWord){
     return joinA;
 }
 
+/** [isPalindrome]
+ * funzione che determina se due parole sono palindrome (true/false)
+ * @param {String} originalW inserita dall'utente nell'input
+ * @param {String} reverseW generata con function reverseWord
+ * @returns {Boolean}
+ */
 function isPalindrome(originalW, reverseW){
     let msg;
     if (originalW === reverseW){
