@@ -75,7 +75,13 @@ btnDanger.addEventListener("click", function(){
             alertSuccess.classList.remove("d-none");
             alertSuccess.innerHTML = "Scegli un numero da 1 a 5";
         }
+        let computerNumber = getRndInteger(1,5);
+        console.log(computerNumber);
     })
 });
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 
 
