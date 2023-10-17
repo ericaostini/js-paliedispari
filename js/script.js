@@ -6,8 +6,12 @@ btn.addEventListener("click", function(){
     let originalWord = word.value.toLowerCase();
     let reverseW = reverseWord(originalWord);
     console.log(reverseW);
-    let palWord = isPalindrome(originalWord,reverseW);
-    console.log(palWord);
+    let palWord;
+    if (palWord = isPalindrome(originalWord,reverseW)){
+        alertEl.innerHTML = "Palindroma";
+    } else {
+        alertEl.innerHTML = "Non è palindroma"
+    }
 
 });
 
@@ -24,6 +28,7 @@ function reverseWord(originalWord){
 }
 
 function isPalindrome(originalW, reverseW){
+    let msg;
     if (originalW === reverseW){
         return true;
     } else{
