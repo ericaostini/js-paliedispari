@@ -6,7 +6,10 @@ btn.addEventListener("click", function(){
     let originalWord = word.value.toLowerCase();
     let reverseW = reverseWord(originalWord);
     console.log(reverseW);
-})
+    let palWord = isPalindrome(originalWord,reverseW);
+    console.log(palWord);
+
+});
 
 /** [reverseWord]
  * funzione che scrive al contrario una parola
@@ -18,4 +21,12 @@ function reverseWord(originalWord){
     let reverseA = splitWord.reverse();
     let joinA = reverseA.join("");
     return joinA;
+}
+
+function isPalindrome(originalW, reverseW){
+    if (originalW === reverseW){
+        return true;
+    } else{
+        return false;
+    }
 }
