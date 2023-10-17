@@ -1,7 +1,9 @@
 # Palindroma
 Programma chiede all'utente di inserire una parola
 
-* funzione per stabilire se parola inserita è palindroma 
+* funzione che inverte parola inserita reverseWord()
+* funzione per stabilire se parola inserita è palindroma isPalindrome()
+* funzione generale che si esegue con il click del bottone palindromeOrNo()
 
 -----------
 
