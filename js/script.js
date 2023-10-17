@@ -46,3 +46,19 @@ function isPalindrome(originalW, reverseW){
         return false;
     }
 }
+
+
+const btnDanger = document.querySelector(".btn-danger");
+const numeroUser = document.getElementById("number");
+const pariDispari = document.getElementById("scelta");
+const alertSuccess = document.querySelector(".alert-success");
+
+btnDanger.addEventListener("click", function(){
+    let sceltaEl = pariDispari.value.toLowerCase();
+    console.log(sceltaEl);
+    if (sceltaEl === "pari" || sceltaEl === "dispari"){
+        alertSuccess.innerHTML = "Giochiamo";
+    } else{
+        alertSuccess.innerHTML = "Devi inserire pari e dispari";
+    }
+});
