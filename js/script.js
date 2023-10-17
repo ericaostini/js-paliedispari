@@ -79,6 +79,7 @@ btnDanger.addEventListener("click", function(){
         console.log(computerNumber);
         alertSuccess.innerHTML +=  ` 
         <div> Computer ha scelto: ${computerNumber} </div>`;
+        sumEvenOrOdd(numeroUser, computerNumber);
     })
 });
 
@@ -86,8 +87,13 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
-function sumEvenOrOdd(){
-
+function sumEvenOrOdd(UserNum, ComputerNum){
+    let sommaNumeri = UserNum + ComputerNum;
+    if (sommaNumeri % 2 === 0){
+        alertSuccess.innerHTML += `<div> La somma dei numeri è ${sommaNumeri}, quindi pari</div>`;
+    } else{
+        alertSuccess.innerHTML += `<div> La somma dei numeri è ${sommaNumeri}, quindi dispari</div>`;
+    }
 }
 
 
