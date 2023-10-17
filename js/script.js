@@ -6,9 +6,13 @@ btn.addEventListener("click", function(){
     let originalWord = word.value.toLowerCase();
     let reverseW = reverseWord(originalWord);
     console.log(reverseW);
-
 })
 
+/** [reverseWord]
+ * funzione che scrive al contrario una parola
+ * @param {String} originalWord parola inserita da input
+ * @returns {String} parola invertita dopo essere stata aggiunta in un array
+ */
 function reverseWord(originalWord){
     let splitWord = originalWord.split("");
     let reverseA = splitWord.reverse();
